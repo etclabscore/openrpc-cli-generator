@@ -17,7 +17,6 @@ import (
 
   homedir "github.com/mitchellh/go-homedir"
   "github.com/spf13/viper"
-  rpct "github.com/gregdhill/go-openrpc/rpc"
   "encoding/json"
 
 )
@@ -63,7 +62,7 @@ To configure your bash shell to load completions for each session add to your ba
 
 var errJSONRPC = errors.New("json rpc did return error")
 func makeJSONRPCRequest(name string, params []byte) ([]byte, error) {
-    reqBody := rpct.RPCRequest{
+    reqBody := RPCRequest{
         JSONRPC: "2.0",
         Method: name,
         Params: params,
@@ -96,7 +95,7 @@ func makeJSONRPCRequest(name string, params []byte) ([]byte, error) {
         return body, err
     }
 
-    errResponse := rpct.RPCErrorResponse{}
+    errResponse := RPCErrorResponse{}
     err = json.Unmarshal(body, &errResponse)
     if err != nil {
         return body, err

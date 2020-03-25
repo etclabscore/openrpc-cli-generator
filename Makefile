@@ -7,10 +7,8 @@ build: pkg
 	go build -o build/bin/openrpc-cli-gen
 
 dev: build
-	./build/bin/openrpc-cli-gen ./testdata/ethereum-json-rpc.json ethrpc
-	cd build/go/ethrpc
-#	go build -o ethrpc .
-
+	./build/bin/openrpc-cli-gen ./testdata/eth_openrpc.json ethrpc
+	# TODO: Add build for resulting generated CLI program.
 
 clean:
 	rm -rf ./build/*
