@@ -8,7 +8,7 @@ A tool that can be used to generate a command line interface (CLI) from a given 
 
 #### Go
 
-:caution: Not sure this works yet. 
+:construction: Not sure this works yet. 
 
 ```sh
 go get -u github.com/etclabscore/openrpc-cli-generator/...
