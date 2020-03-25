@@ -16,8 +16,13 @@ limitations under the License.
 package cmd
 
 import (
+  "encoding/json"
   "fmt"
+  "io/ioutil"
+  "log"
   "os"
+  "github.com/etclabscore/openrpc-cli-generator/lib"
+  "github.com/gregdhill/go-openrpc/types"
   "github.com/spf13/cobra"
 
   homedir "github.com/mitchellh/go-homedir"
@@ -28,6 +33,20 @@ import (
 
 var cfgFile string
 
+func readSpec(file string) (*types.OpenRPCSpec1, error) {
+  data, err := ioutil.ReadFile(file)
+  if err != nil {
+    return nil, err
+  }
+
+  spec := types.NewOpenRPCSpec1()
+  err = json.Unmarshal(data, spec)
+  if err != nil {
+    return nil, err
+  }
+
+  return spec, nil
+}
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -41,7 +60,23 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
   // Uncomment the following line if your bare application
   // has an action associated with it:
-  //	Run: func(cmd *cobra.Command, args []string) { },
+  	Run: func(cmd *cobra.Command, args []string) {
+
+  	  spec, err := readSpec(args[0])
+      if err != nil {
+        log.Fatal(err)
+      }
+
+      log.Println("OK: Have spec.")
+
+      programName := args[1]
+
+      err = lib.GenerateCLI(spec, programName)
+      if err != nil {
+        log.Fatal(err)
+      }
+
+    },
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

@@ -1,6 +1,8 @@
 package lib
 
 import (
+	"log"
+
 	"github.com/gobuffalo/packr/v2"
 	"github.com/gregdhill/go-openrpc/generate"
 	"github.com/gregdhill/go-openrpc/parse"
@@ -9,6 +11,8 @@ import (
 
 func GenerateCLI(spec1 *types.OpenRPCSpec1, programName string) error {
 	parse.GetTypes(spec1, spec1.Objects)
+
+	log.Println("OK: Have types.")
 	box := packr.New("template", "./templates")
 
 	generate.ProgramName = programName
