@@ -22,40 +22,42 @@ func GenerateCLI(spec1 *types.OpenRPCSpec1, programName string) error {
 	generate.ProgramName = programName
 
 
+	targetPath := filepath.Join(".", "build", "target")
+	targetPath =  filepath.Join(targetPath, "go") // TODO
 
-	err := os.MkdirAll(filepath.Join(".", "build", "go", programName, "cmd"), os.ModePerm)
+	err := os.MkdirAll(filepath.Join(".", targetPath, programName, "cmd"), os.ModePerm)
 	if err != nil {
 		return err
 	}
 
-	if err = generate.WriteFile(box, "server", filepath.Join("build", "go", programName, "cmd"), spec1); err != nil {
+	if err = generate.WriteFile(box, "server", filepath.Join(targetPath, programName, "cmd"), spec1); err != nil {
 		return err
 	}
 
-	if err = generate.WriteFile(box, "types", filepath.Join("build", "go", programName, "cmd"), spec1); err != nil {
+	if err = generate.WriteFile(box, "types", filepath.Join(targetPath, programName, "cmd"), spec1); err != nil {
 		return err
 	}
 
-	err = generate.WriteFile(box, "main", filepath.Join("build", "go", programName), spec1)
+	err = generate.WriteFile(box, "main", filepath.Join(targetPath, programName), spec1)
 	if err != nil {
 		return err
 	}
-	err = generate.WriteFile(box, "cli_cmd", filepath.Join("build", "go", programName, "cmd"), spec1)
+	err = generate.WriteFile(box, "cli_cmd", filepath.Join(targetPath, programName, "cmd"), spec1)
 	if err != nil {
 		return err
 	}
 
 	// HACK,FIXME.
-	bs, err := ioutil.ReadFile(filepath.Join("build", "go", programName, "main.go"))
+	bs, err := ioutil.ReadFile(filepath.Join(targetPath, programName, "main.go"))
 	if err != nil {
 		return err
 	}
 	bs = bytes.Replace(bs, []byte("package "+programName), []byte("package main"), 1)
-	err = ioutil.WriteFile(filepath.Join("build", "go", programName, "main.go"), bs, os.ModePerm)
+	err = ioutil.WriteFile(filepath.Join(targetPath, programName, "main.go"), bs, os.ModePerm)
 	if err != nil {
 		return err
 	}
-	//err = ioutil.WriteFile(filepath.Join(".", "build", "go", programName, "go.mod"), nil, os.ModePerm)
+	//err = ioutil.WriteFile(filepath.Join(".", targetPath, programName, "go.mod"), nil, os.ModePerm)
 	//if err != nil {
 	//	return err
 	//}
