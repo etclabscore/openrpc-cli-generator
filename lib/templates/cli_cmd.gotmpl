@@ -253,7 +253,7 @@ func init() {
 
   {{- $defaultAddr := "http://localhost:8545" }}
   {{- if gt (len .Servers) 0 }}
-  {{- $serverZ := slice .Servers 0 }}
+  {{- $serverZ := index .Servers 0 }}
   {{- $defaultAddr = $serverZ.URL }}
   {{- end }}
 

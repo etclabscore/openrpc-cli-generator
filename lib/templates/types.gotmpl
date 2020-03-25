@@ -3,6 +3,8 @@
 package main
 
 type object map[string]interface{}
+type integer int
+type null interface{} // FIXME
 
 type GoOpenRPCService interface {
 {{- range .Methods }}
