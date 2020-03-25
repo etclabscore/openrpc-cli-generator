@@ -10,4 +10,4 @@ require (
 	github.com/spf13/viper v1.6.2
 )
 
-replace github.com/gregdhill/go-openrpc => /home/ia/dev/gregdhill/go-openrpc
+# replace github.com/gregdhill/go-openrpc => /home/ia/dev/gregdhill/go-openrpc
