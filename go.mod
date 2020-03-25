@@ -9,3 +9,5 @@ require (
 	github.com/spf13/cobra v0.0.6
 	github.com/spf13/viper v1.6.2
 )
+
+replace github.com/gregdhill/go-openrpc => /home/ia/dev/gregdhill/go-openrpc

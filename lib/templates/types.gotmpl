@@ -2,6 +2,8 @@
 
 package main
 
+type object map[string]interface{}
+
 type GoOpenRPCService interface {
 {{- range .Methods }}
 {{- $name := .Name | camelCase }}

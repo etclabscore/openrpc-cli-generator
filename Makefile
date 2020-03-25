@@ -9,6 +9,8 @@ build: pkg
 
 dev: clean build examples
 
+dev2: clean build example2
+
 examples: pkg example1 example2 example3
 
 example1: clean_targets
