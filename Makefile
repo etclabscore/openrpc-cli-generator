@@ -4,10 +4,10 @@ pkg:
 	packr2
 
 build: pkg
-	go build -o build/bin/openrpc-cli-gen
-	@echo "Done. Run: build/bin/openrpc-cli-gen"
+	go build -o build/bin/openrpc-cli-generator
+	@echo "Done. Run: build/bin/openrpc-cli-generator"
 
-dev: pkg clean_targets examples
+dev: clean build examples
 
 examples: pkg example1 example2 example3
 
