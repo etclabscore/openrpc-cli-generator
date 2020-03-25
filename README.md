@@ -19,6 +19,7 @@ openrpc-cli-generator --help
 ```sh
 $ git clone https://github.com/etclabscore/openrpc-cli-generator.git
 $ cd openrpc-cli-generator
+$ go get ./...
 $ make build
 $ ./build/bin/openrpc-cli-generator --help
 ```
