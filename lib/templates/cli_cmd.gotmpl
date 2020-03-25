@@ -30,7 +30,7 @@ var rpcAddr string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
   Use:   "{{ $cliName }}",
-  Short: "{{ .Info.Title }} CLI",
+  Short: `{{ .Info.Title }} CLI`,
   Long: `This is an auto-generated CLI interface for an Open-RPC compliant API.
 
 Open-RPC Version: {{ .Info.Version }}
@@ -45,7 +45,7 @@ Run '{{ $cliName }} completion --help' to learn about auto-auto-completion! It's
 // completionCmd represents the completion command
 var completionCmd = &cobra.Command{
 	Use:   "completion",
-	Short: "Generates bash completion scripts",
+	Short: `Generates bash completion scripts`,
 	Long: `To load completion run
 
 . <({{ $cliName }} completion)
@@ -189,7 +189,7 @@ func marshalParams(params []string) ([]byte, error) {
 
 var {{ .Name | camelCase | lowerFirst }}Cmd = &cobra.Command{
     Use: "{{ .Name }}",
-    Short: "{{ .Summary }}",
+    Short: `{{ sanitizeBackticks .Summary }}`,
     Long: `
 
 Params: {{ if eq (len .Params) 0 }}<NONE>
@@ -206,7 +206,9 @@ Params: {{ if eq (len .Params) 0 }}<NONE>
 
 Returns:
 {{- $r := lookupContentDescriptor $components .Result }}
+{{ if $r }}
 {{ derefSchema $components $r.Schema | schemaAsJSONPretty | sanitizeBackticks }}
+{{ end }}
 
 {{- if ne .ExternalDocs.URL ""}}
 

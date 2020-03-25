@@ -7,9 +7,10 @@ pkg:
 	packr2
 
 dev: clean build examples
-dev_edge: clean build example_simplemath
+dev_edge: clean build example_ethereum_unstable
 
-examples: pkg example_ethereum_stable example_ethereum_unstable example_simplemath example_petstore
+# examples only runs current passing examples. For WIP examples, see dev_edge command.
+examples: pkg example_ethereum_stable example_simplemath example_petstore
 example_ethereum_stable: clean build
 	@echo "Building example 1"
 	[ -f  ./testdata/ethereum-open-rpc-json-spec-1.0.0_1.0.10.json ] || wget -O ./testdata/ethereum-open-rpc-json-spec-1.0.0_1.0.10.json --no-check-certificate https://raw.githubusercontent.com/etclabscore/ethereum-json-rpc-specification/f4c0c08bea2cee4639affaec77f437efe8596d07/openrpc.json
