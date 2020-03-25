@@ -19,18 +19,18 @@ func GenerateCLI(spec1 *types.OpenRPCSpec1, programName string) error {
 
 	generate.ProgramName = programName
 
-	err := os.MkdirAll(filepath.Join(".", "build", "pkg", "cmd"), os.ModePerm)
+
+
+	err := os.MkdirAll(filepath.Join(".", "build", programName, "cmd"), os.ModePerm)
 	if err != nil {
 		return err
 	}
 
-	//err = os.MkdirAll(filepath.Join(".", ))
-
-	err = generate.WriteFile(box, "cli", "build/pkg/main", spec1)
+	err = generate.WriteFile(box, "main", filepath.Join("build", programName), spec1)
 	if err != nil {
 		return err
 	}
-	err = generate.WriteFile(box, "cli_cmd", "build/pkg/cmd", spec1)
+	err = generate.WriteFile(box, "cli_cmd", filepath.Join("build", programName, "cmd"), spec1)
 	if err != nil {
 		return err
 	}

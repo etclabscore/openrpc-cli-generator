@@ -8,3 +8,7 @@ build: pkg
 
 dev: build
 	./build/bin/openrpc-cli-gen ./testdata/ethereum-json-rpc.json ethrpc
+	
+
+clean:
+	rm -rf ./build/*
