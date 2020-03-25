@@ -1,6 +1,6 @@
 # openrpc-cli-generator
 
-A tool that can be used to generate a command line interface (CLI) for a given [Open-RPC](https://github.com/open-rpc) document.
+A tool that can be used to generate a command line interface (CLI) from a given [Open-RPC](https://github.com/open-rpc) document.
 
 ## Usage
 
