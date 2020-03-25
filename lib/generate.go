@@ -2,6 +2,8 @@ package lib
 
 import (
 	"log"
+	"os"
+	"path/filepath"
 
 	"github.com/gobuffalo/packr/v2"
 	"github.com/gregdhill/go-openrpc/generate"
@@ -16,11 +18,19 @@ func GenerateCLI(spec1 *types.OpenRPCSpec1, programName string) error {
 	box := packr.New("template", "./templates")
 
 	generate.ProgramName = programName
-	err := generate.WriteFile(box, "cli", "main", spec1)
+
+	err := os.MkdirAll(filepath.Join(".", "build", "pkg", "cmd"), os.ModePerm)
 	if err != nil {
 		return err
 	}
-	err = generate.WriteFile(box, "cli_cmd", "cmd", spec1)
+
+	//err = os.MkdirAll(filepath.Join(".", ))
+
+	err = generate.WriteFile(box, "cli", "build/pkg/main", spec1)
+	if err != nil {
+		return err
+	}
+	err = generate.WriteFile(box, "cli_cmd", "build/pkg/cmd", spec1)
 	if err != nil {
 		return err
 	}

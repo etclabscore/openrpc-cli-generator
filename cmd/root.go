@@ -67,6 +67,8 @@ to quickly create a Cobra application.`,
         log.Fatal(err)
       }
 
+      log.SetFlags(log.Lshortfile)
+
       log.Println("OK: Have spec.")
 
       programName := args[1]
