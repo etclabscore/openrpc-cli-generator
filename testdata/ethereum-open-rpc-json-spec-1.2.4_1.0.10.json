@@ -18,10 +18,9 @@
   "servers": [
     {
       "name": "tcp", 
-      "url": "127.0.0.1:8545", 
+      "url": "http://127.0.0.1:8545", 
       "summary": "", 
-      "description": "CoreGeth/v1.11.2-unstable", 
-      "variables": null
+      "description": "CoreGeth/v1.11.2-unstable"
     }
   ], 
   "methods": [
@@ -8926,6 +8925,6 @@
   }, 
   "externalDocs": {
     "description": "", 
-    "url": ""
+    "url": "http://localhost:8080"
   }
 }
