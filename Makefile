@@ -17,16 +17,15 @@ dev: clean build examples_stable
 dev_unstable: clean build examples_unstable
 
 # examples_stable only runs passing examples.
-examples_stable: pkg example_simplemath example_petstore
+examples_stable: pkg example_simplemath example_petstore example_ethereum_stable
 
 # examples_unstable runs examples that might be broken.
-examples_unstable: pkg example_ethereum_stable example_ethereum_unstable
+examples_unstable: pkg example_ethereum_unstable
 
 
 example_ethereum_master: clean build
 	@echo "Building from github.com/etclabscore/ethereum-json-specification master document"
-	# [ -f  ./testdata/ethereum_master.json ] || wget -O ./testdata/ethereum_master.json --no-check-certificate https://raw.githubusercontent.com/etclabscore/ethereum-json-rpc-specification/master/openrpc.json
-	[ -f  ./testdata/ethereum_master.json ] || wget -O ./testdata/ethereum_master.json --no-check-certificate https://github.com/etclabscore/ethereum-json-rpc-specification/raw/1.0.10/openrpc.json
+	 [ -f  ./testdata/ethereum_master.json ] || wget -O ./testdata/ethereum_master.json --no-check-certificate https://raw.githubusercontent.com/etclabscore/ethereum-json-rpc-specification/master/openrpc.json
 	go run . ./testdata/ethereum_master.json ethrpc_master
 	go build -o ./build/bin/ethrpc.example_ethereum_master ./build/target/go/ethrpc_master
 	./build/bin/ethrpc.example_ethereum_master --help
