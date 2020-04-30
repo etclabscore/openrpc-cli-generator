@@ -1,8 +1,41 @@
 # openrpc-cli-generator
 
-A tool that can be used to generate a command line interface (CLI) from a given [Open-RPC](https://github.com/open-rpc) document.
+A tool that can be used to generate a command line interface (CLI) program from a given [Open-RPC](https://github.com/open-rpc) document.
 
 ## Usage
+
+You need to have:
+- [ ] Go installed
+- [ ] an [Open-RPC](https://github.com/open-rpc) document
+
+What happens:
+
+You run the command:
+```sh
+$ openrpc-cli-generator my_openrpc_document.json my-program-name
+``` 
+
+You get:
+
+```bash
+./build/target/my-program-name
+```
+
+Then you install or build the Go program you just generated:
+
+```bash
+# Build:
+$ go build -o myprogram ./build/target/my-program-name
+$ ./myprogram --help
+
+# Install:
+$ go install ./build/target/my-program-name
+$ which my-program-name
+> /home/me/go/bin/my-program-name
+$ my-program-name --help
+``` 
+
+And voila!
 
 ### Install
 
@@ -11,7 +44,7 @@ A tool that can be used to generate a command line interface (CLI) from a given 
 :construction: Not sure this works yet. 
 
 ```sh
-go get -u github.com/etclabscore/openrpc-cli-generator/...
+go get -u github.com/etclabscore/openrpc-cli-generator/cmd
 openrpc-cli-generator --help
 ```
 
