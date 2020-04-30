@@ -7,7 +7,6 @@ require (
 	github.com/go-openapi/jsonreference v0.19.3 // indirect
 	github.com/go-openapi/spec v0.19.7 // indirect
 	github.com/go-openapi/swag v0.19.8 // indirect
-	github.com/gobuffalo/envy v1.9.0 // indirect
 	github.com/gobuffalo/packr/v2 v2.8.0
 	github.com/gregdhill/go-openrpc v0.0.0-20191115123255-ebc6f01c6db3
 	github.com/imdario/mergo v0.3.9 // indirect
@@ -28,5 +27,3 @@ require (
 	gopkg.in/ini.v1 v1.55.0 // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )
-
-replace github.com/gregdhill/go-openrpc => /home/ia/dev/gregdhill/go-openrpc
