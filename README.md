@@ -18,7 +18,12 @@ $ openrpc-cli-generator my_openrpc_document.json my-program-name
 You get:
 
 ```bash
-./build/target/my-program-name
+./build/target/go/my-program-name
+├── cmd
+│   ├── cli_cmd.go
+│   ├── server.go
+│   └── types.go
+└── main.go
 ```
 
 Then you install or build the Go program you just generated:
@@ -26,6 +31,7 @@ Then you install or build the Go program you just generated:
 ```bash
 # Build:
 $ go build -o myprogram ./build/target/my-program-name
+# Profit!
 $ ./myprogram --help
 
 # Install:
