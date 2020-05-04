@@ -70,7 +70,7 @@ var rootCmd = &cobra.Command{
 
       err = lib.GenerateCLI(spec, programName)
       if err != nil {
-        log.Fatal(err)
+        log.Fatalln("generate cli error:", err)
       }
     },
 }
