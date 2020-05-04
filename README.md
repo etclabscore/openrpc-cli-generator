@@ -41,10 +41,9 @@ And voila!
 
 #### Go
 
-:construction: Not sure this works yet. 
 
 ```sh
-go get -u github.com/etclabscore/openrpc-cli-generator/cmd
+go get -u github.com/etclabscore/openrpc-cli-generator/...
 openrpc-cli-generator --help
 ```
 
